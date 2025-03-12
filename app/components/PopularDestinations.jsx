@@ -137,7 +137,7 @@ export default function PopularDestinations() {
   };
 
   return (
-    <section id="destinations" className="px-6 lg:px-16 py-16 bg-gray-50">
+    <section id="destinations" className="px-6 lg:px-16 py-8 bg-gradient-to-b from-white to-gray-50">
       {/* Header */}
       <motion.div
         variants={staggerContainer}
@@ -223,23 +223,6 @@ export default function PopularDestinations() {
             </motion.div>
           ))}
         </Slider>
-      </motion.div>
-
-      {/* Tombol See All Destinations */}
-      <motion.div
-        variants={fadeInUp}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        className="mt-8 flex justify-center"
-      >
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="px-6 py-3 bg-gray-800 text-white rounded-full font-semibold transition-colors hover:bg-primary-dark"
-        >
-          See All Destinations
-        </motion.button>
       </motion.div>
 
       {/* Quick View Modal */}

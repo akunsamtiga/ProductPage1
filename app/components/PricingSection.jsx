@@ -29,7 +29,7 @@ export default function PricingSection() {
   ];
 
   return (
-    <section id="pricing" className="px-6 lg:px-16 py-20 bg-gradient-to-b from-gray-800 via-gray-700 to-white">
+    <section id="pricing" className="px-6 lg:px-16 py-16 bg-gradient-to-b from-gray-800 via-gray-600 to-gray-200">
       {/* Header Section */}
       <motion.div 
         variants={staggerContainer}
@@ -40,7 +40,7 @@ export default function PricingSection() {
       >
         <motion.h2 
           variants={fadeInUp}
-          className="text-3xl md:text-4xl lg:text-6xl font-extrabold text-transparent bg-clip-text"
+          className="text-3xl md:text-4xl py-2 lg:text-6xl font-extrabold text-transparent bg-clip-text"
           style={{
             backgroundImage: "linear-gradient(to right,rgb(226, 246, 255),rgb(255, 255, 255))",
             WebkitBackgroundClip: "text",

@@ -1,10 +1,14 @@
 "use client";
 import React, { useState } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import VideoModal from "./VideoModal";
 import { fadeInUp, staggerContainer } from "../utils/animations";
 import { FaPlay } from "react-icons/fa";
+
+// Impor RainEffect secara dinamis agar tidak di-render di server
+const RainEffect = dynamic(() => import("./RainEffect"), { ssr: false });
 
 export default function HeroSection() {
   const [showVideo, setShowVideo] = useState(false);
@@ -15,7 +19,7 @@ export default function HeroSection() {
       initial="hidden"
       animate="show"
       variants={staggerContainer}
-      className="relative px-4 md:px-6 lg:px-16 py-12 lg:py-28 bg-gradient-to-br from-blue-100 via-gray-100 to-white overflow-hidden"
+      className="relative px-4 md:px-6 lg:px-16 pt-4 md:pt-6 pb-12 md:pb-16 lg:pb-24 bg-gradient-to-b from-blue-100 to-white overflow-hidden"
     >
       {/* Animated Blob Background */}
       <motion.div
@@ -57,13 +61,14 @@ export default function HeroSection() {
             className="absolute top-72 -left-10 w-[200px] md:top-10 md:-left-6 md:w-[250px] lg:hidden z-[5]"
           >
             <motion.div
-              animate={{ x: ["-10%", "10%", "-10%"] }}
+              animate={{ x: ["-6%", "3%", "-3%"], y: ["-6%", "3%", "-3%"] }}
               transition={{
                 duration: 3,
                 repeat: Infinity,
                 repeatType: "reverse",
                 ease: "easeInOut",
               }}
+              className="relative"
             >
               <Image
                 src="/images/plane.png"
@@ -72,13 +77,15 @@ export default function HeroSection() {
                 height={250}
                 className="opacity-100"
               />
+              {/* Tambahkan efek hujan */}
+              <RainEffect />
             </motion.div>
           </motion.div>
 
           {/* Animated Heading dengan text clip masking */}
           <motion.h1
             variants={fadeInUp}
-            className="text-5xl lg:text-7xl font-black leading-[1.1] mb-8 text-transparent bg-clip-text"
+            className="text-5xl lg:text-7xl font-black leading-[1.1] mb-2 p-2 py-3 text-transparent bg-clip-text"
             style={{
               backgroundImage:
                 "linear-gradient(to right, #1e40af, #06b6d4)",
@@ -146,7 +153,7 @@ export default function HeroSection() {
           className="order-1 lg:order-2 relative h-[300px] lg:h-[500px] w-full hidden lg:block"
         >
           <motion.div
-            animate={{ y: ["0%", "-5%", "0%"] }}
+            animate={{ y: ["0%", "-8%", "0%"] }}
             transition={{
               duration: 3,
               repeat: Infinity,
@@ -163,6 +170,8 @@ export default function HeroSection() {
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
+            {/* Overlay efek hujan */}
+            <RainEffect />
           </motion.div>
           <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent"></div>
         </motion.div>

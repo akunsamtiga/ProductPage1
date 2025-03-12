@@ -1,8 +1,7 @@
-// app/services/page.jsx
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { fadeInUp, staggerContainer } from "../utils/animations";
+import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer } from "../utils/animations";
 
 const services = [
   {
@@ -36,46 +35,111 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="px-6 lg:px-16 py-10 lg:py-16 bg-gray-50">
-      <motion.div 
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        className="max-w-3xl mx-auto text-center mb-12"
+    <section className="relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 py-16 px-6 lg:px-16">
+      {/* Background Decorative SVG */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+        className="absolute inset-0 z-0 pointer-events-none"
       >
-        <motion.h1 
-          variants={fadeInUp}
-          className="text-4xl font-bold mb-4 text-blue-900"
+        <svg
+          className="w-full h-full"
+          viewBox="0 0 800 600"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          Layanan Kami
-        </motion.h1>
-        <motion.p 
-          variants={fadeInUp}
-          className="text-lg text-gray-700"
-        >
-          Solusi lengkap untuk kebutuhan perjalanan Anda
-        </motion.p>
+          <defs>
+            <linearGradient id="servicesBgGradient" x1="0" y1="0" x2="800" y2="600">
+              <stop offset="0%" stopColor="#ffffff" />
+              <stop offset="100%" stopColor="#f9fafb" />
+            </linearGradient>
+          </defs>
+          <rect width="800" height="600" fill="url(#servicesBgGradient)" />
+          <path d="M0,200 C200,100 600,300 800,200 L800,600 L0,600 Z" fill="#e0f2fe" opacity="0.2" />
+          <circle cx="100" cy="100" r="50" fill="#bae6fd" opacity="0.3" />
+          <circle cx="700" cy="500" r="70" fill="#c7d2fe" opacity="0.3" />
+        </svg>
       </motion.div>
 
-      <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-        {services.map((service, index) => (
-          <motion.div 
-            key={index}
+      <div className="relative z-10">
+        {/* Header Section */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto text-center mb-12"
+        >
+          <motion.h1
             variants={fadeInUp}
-            className="p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
+            className="text-5xl lg:text-6xl font-extrabold text-blue-900 mb-4"
           >
-            <div className="flex items-center justify-center mb-6">
-              {service.icon}
-            </div>
-            <h3 className="text-xl font-semibold mb-3 text-blue-800">
-              {service.title}
-            </h3>
-            <p className="text-gray-600">
-              {service.desc}
-            </p>
-          </motion.div>
-        ))}
+            Layanan Kami
+          </motion.h1>
+          <motion.p
+            variants={fadeInUp}
+            className="text-xl lg:text-2xl text-gray-700"
+          >
+            Solusi lengkap untuk kebutuhan perjalanan Anda dengan teknologi terkini dan layanan profesional.
+          </motion.p>
+        </motion.div>
+
+        {/* Services Grid */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12"
+        >
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              variants={fadeInUp}
+              whileHover={{ scale: 1.05, rotate: 1 }}
+              className="p-8 bg-white rounded-3xl shadow-2xl hover:shadow-3xl transition-all transform hover:-translate-y-2"
+            >
+              <div className="flex items-center justify-center mb-6">
+                {service.icon}
+              </div>
+              <motion.h3
+                variants={fadeInUp}
+                className="text-2xl font-bold mb-3 text-blue-800"
+              >
+                {service.title}
+              </motion.h3>
+              <motion.p
+                variants={fadeInUp}
+                className="text-gray-600"
+              >
+                {service.desc}
+              </motion.p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Additional Info Section */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          className="mt-16 max-w-4xl mx-auto text-center"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="text-4xl font-bold text-blue-900 mb-6"
+          >
+            Mengapa Memilih Kami?
+          </motion.h2>
+          <motion.p
+            variants={fadeInUp}
+            className="text-lg text-gray-700 max-w-3xl mx-auto"
+          >
+            Kami mengutamakan inovasi, kenyamanan, dan keamanan dalam setiap layanan.
+            Dengan dukungan teknologi canggih dan tim profesional, kami memastikan setiap
+            perjalanan Anda berjalan dengan lancar dan menyenangkan.
+          </motion.p>
+        </motion.div>
       </div>
     </section>
   );

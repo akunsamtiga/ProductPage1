@@ -6,7 +6,7 @@ import { fadeInLeft, fadeInRight, staggerContainer } from "../utils/animations";
 
 export default function PromoSection() {
   return (
-    <section id="promo" className="px-6 lg:px-16 py-16 bg-gradient-to-r from-blue-50 to-white">
+    <section id="promo" className="px-6 lg:px-16 py-16 bg-gradient-to-b from-gray-100 to-gray-200">
       <motion.div 
         variants={staggerContainer}
         initial="hidden"
@@ -38,10 +38,10 @@ export default function PromoSection() {
         {/* Right Text Content with Text Clip Masking and Button Animation */}
         <motion.div 
           variants={fadeInRight}
-          className="space-y-6"
+          className="space-y-6 text-center"
         >
           <motion.h2
-            className="text-4xl lg:text-5xl font-bold text-transparent bg-clip-text"
+            className="text-4xl lg:text-5xl font-extrabold text-transparent bg-clip-text"
             style={{
               backgroundImage: "linear-gradient(to right,rgb(175, 30, 30),rgb(212, 188, 6))",
               WebkitBackgroundClip: "text",
@@ -49,7 +49,7 @@ export default function PromoSection() {
             }}
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1 }}
           >
             UNLEASH WANDERLUST WITH SKYWINGS
           </motion.h2>
@@ -57,7 +57,7 @@ export default function PromoSection() {
             className="text-lg text-gray-700"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 1, delay: 0.2 }}
           >
             Dapatkan diskon spesial untuk perjalanan pertama Anda!
           </motion.p>
@@ -65,7 +65,7 @@ export default function PromoSection() {
             className="text-5xl font-extrabold mb-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 1, delay: 0.4 }}
             style={{
               backgroundImage: "linear-gradient(to right,rgb(175, 30, 30),rgb(212, 171, 6))",
               WebkitBackgroundClip: "text",
@@ -78,7 +78,7 @@ export default function PromoSection() {
             className="bg-red-800 hover:bg-red-400 text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-lg"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 1, delay: 0.6 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

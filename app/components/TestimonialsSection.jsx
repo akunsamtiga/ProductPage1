@@ -22,7 +22,7 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section id="testimonials" className="px-6 lg:px-16 py-16 bg-white">
+    <section id="testimonials" className="px-6 lg:px-16 py-12 bg-gradient-to-b from-gray-200 to-gray-100">
       <motion.div 
         variants={staggerContainer}
         initial="hidden"

@@ -2,6 +2,7 @@ import "./globals.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import ScrollToTopButton from "./components/ScrollToTopButton";
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata = {
   title: "SkyWings",
@@ -43,7 +44,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className="font-sans">
         <NavBar />
-        <main>{children}</main>
+        <main>{children}<Analytics /></main>
         <Footer />
         <ScrollToTopButton />
       </body>

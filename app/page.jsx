@@ -10,7 +10,7 @@ import FeaturesSection from "./components/FeaturesSection";
 import PricingSection from "./components/PricingSection";
 const TestimonialsSection = dynamic(() => import("./components/TestimonialsSection"), { ssr: false });
 import FAQSection from "./components/FAQSection";
-import NewsletterSection from "./components/NewsletterSection";
+import Partner from "./components/Partner";
 
 export default function Home() {
   return (
@@ -23,7 +23,7 @@ export default function Home() {
       <PricingSection />
       <TestimonialsSection />
       <FAQSection />
-      <NewsletterSection />
+      <Partner />
     </>
   );
 }

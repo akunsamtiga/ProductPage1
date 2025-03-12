@@ -50,7 +50,7 @@ Kelas: ${flightClass}`;
   return (
     <section
       id="journey"
-      className="px-6 lg:px-16 py-16 bg-gradient-to-r from-blue-50 to-white"
+      className="px-6 lg:px-16 py-4 bg-gradient-to-b from-gray-50 to-gray-100"
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Left Content */}
@@ -63,7 +63,7 @@ Kelas: ${flightClass}`;
         >
           <motion.h2
             variants={fadeInLeft}
-            className="text-5xl lg:text-7xl font-black leading-[1.1] mb-8 text-transparent bg-clip-text"
+            className="text-3xl md:text-5xl font-black leading-[1.1] mb-4 p-2 py-4 text-transparent bg-clip-text"
             style={{
               backgroundImage:
                 "linear-gradient(to right, #1e40af, #06b6d4)",
@@ -93,7 +93,7 @@ Kelas: ${flightClass}`;
                   show: { opacity: 1, x: 0 },
                 }}
               >
-                <span className="bg-blue-600 text-white rounded-full p-2">
+                <span className="bg-blue-600 text-white rounded-full p-1">
                   <svg
                     className="w-5 h-5"
                     fill="none"

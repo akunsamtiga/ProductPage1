@@ -10,7 +10,7 @@ export default function FAQSection() {
   const toggleFAQ = (id) => setActiveFAQ((prev) => (prev === id ? null : id));
 
   return (
-    <section id="faq" className="px-6 lg:px-16 py-16 bg-gray-50">
+    <section id="faq" className="px-6 lg:px-16 py-12 bg-gradient-to-b from-gray-100 to-gray-50">
       <motion.div 
         variants={staggerContainer}
         initial="hidden"
