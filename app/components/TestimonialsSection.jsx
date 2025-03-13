@@ -21,6 +21,19 @@ export default function TestimonialsSection() {
     responsive: [{ breakpoint: 1024, settings: { slidesToShow: 1 } }],
   };
 
+  // Fungsi untuk menampilkan bintang rating
+  const renderStars = (rating) => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      stars.push(
+        <span key={i} className={i <= rating ? "text-yellow-400" : "text-gray-300"}>
+          ★
+        </span>
+      );
+    }
+    return stars;
+  };
+
   return (
     <section id="testimonials" className="px-6 lg:px-16 py-12 bg-gradient-to-b from-gray-200 to-gray-100">
       <motion.div 
@@ -34,7 +47,7 @@ export default function TestimonialsSection() {
           variants={fadeInUp}
           className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
         >
-          What Our Customers Say
+          Apa Kata Pelanggan Kami
         </motion.h2>
         <motion.p 
           variants={fadeInUp}
@@ -63,6 +76,7 @@ export default function TestimonialsSection() {
                 </div>
                 <div>
                   <h4 className="text-lg font-bold text-gray-900">{testimonial.name}</h4>
+                  <div className="flex">{renderStars(testimonial.rating)}</div>
                 </div>
               </div>
               <p className="italic text-gray-700">"{testimonial.comment}"</p>

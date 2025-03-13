@@ -1,3 +1,4 @@
+// app/contact/page.jsx
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
@@ -14,12 +15,19 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus("loading");
-    // Simulasi pengiriman data
-    setTimeout(() => {
-      setStatus("success");
-      setFormData({ name: "", email: "", message: "" });
-    }, 1500);
+    // Format pesan untuk WhatsApp
+    const messageText = `Halo, saya ${formData.name} (${formData.email}). ${formData.message}`;
+    const encodedText = encodeURIComponent(messageText);
+    // Ubah nomor tujuan: 081217811062 -> 6281217811062
+    const whatsappNumber = "6281217811062";
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
+
+    // Buka link WhatsApp di tab baru
+    window.open(whatsappURL, "_blank");
+
+    // Set status sukses dan reset form
+    setStatus("success");
+    setFormData({ name: "", email: "", message: "" });
   };
 
   return (
@@ -124,7 +132,7 @@ export default function Contact() {
           <motion.form
             variants={fadeInRight}
             onSubmit={handleSubmit}
-            className="bg-white p-8 rounded-3xl shadow-2xl space-y-6"
+            className="bg-white p-8 rounded-3xl shadow-2xl space-y-5"
           >
             <div className="grid gap-6">
               <motion.input
@@ -174,24 +182,36 @@ export default function Contact() {
             {status === "success" && (
               <motion.p
                 variants={fadeInUp}
-                className="mt-4 text-green-600 text-center"
+                className="text-green-600 text-center"
               >
                 Pesan berhasil terkirim!
+              </motion.p>
+            )}
+            {status === "error" && (
+              <motion.p
+                variants={fadeInUp}
+                className="text-red-600 text-center"
+              >
+                Terjadi kesalahan. Silakan coba lagi.
               </motion.p>
             )}
           </motion.form>
         </motion.div>
 
-        {/* Embedded Map / Lokasi Kami */}
+        {/* Embedded Map / Lokasi Kami (Responsive Iframe Google Maps Surabaya) */}
         <motion.div
           variants={fadeInUp}
           className="mt-16 max-w-6xl mx-auto rounded-3xl overflow-hidden shadow-2xl"
         >
-          <img
-            src="/images/map-placeholder.jpg"
-            alt="Lokasi Kami"
-            className="w-full h-96 object-cover"
-          />
+          <div className="relative pb-[56.25%]">
+            <iframe
+              title="Lokasi Kami - Surabaya"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.663754987682!2d112.75208841413295!3d-7.257472194090371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7e9c70d2b1e0f%3A0xdcc3a1c4b8a35b45!2sSurabaya%2C%20Jawa%20Timur%2C%20Indonesia!5e0!3m2!1sid!2sid!4v1684280000000!5m2!1sid!2sid"
+              className="absolute top-0 left-0 w-full h-full border-0"
+              allowFullScreen=""
+              loading="lazy"
+            ></iframe>
+          </div>
         </motion.div>
       </div>
     </section>

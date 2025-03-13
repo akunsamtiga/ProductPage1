@@ -22,7 +22,7 @@ export default function FAQSection() {
           variants={fadeInUp}
           className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
         >
-          Frequently Asked Questions
+          Pertanyaan yang Sering Diajukan (FAQ)
         </motion.h2>
         <motion.p 
           variants={fadeInUp}

@@ -1,3 +1,4 @@
+// app/components/RainEffect.jsx
 "use client";
 import React from "react";
 

@@ -1,3 +1,4 @@
+// app/components/FeaturesSection.jsx
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
@@ -22,30 +23,30 @@ function ClientOnly({ children }) {
 
 export default function FeaturesSection() {
   const features = [
-    { 
-      id: 1, 
-      icon: FaRocket, 
-      title: "Fast Performance", 
-      description: "Nikmati kecepatan luar biasa dengan platform yang dioptimalkan." 
+    {
+      id: 1,
+      icon: FaRocket,
+      title: "Lightning-Fast Performance",
+      description: "Rasakan performa luar biasa dengan platform yang dioptimalkan untuk kecepatan tinggi. Proses pemuatan halaman super cepat memastikan pengalaman pengguna yang mulus, tanpa hambatan, bahkan saat lalu lintas tinggi."
     },
-    { 
-      id: 2, 
-      icon: FaMobileAlt, 
-      title: "Responsive Design", 
-      description: "Desain modern yang beradaptasi di semua perangkat." 
+    {
+      id: 2,
+      icon: FaMobileAlt,
+      title: "Seamless Responsive Design",
+      description: "Desain modern dan adaptif yang terlihat sempurna di semua perangkat baik ponsel, tablet, maupun desktop. Setiap elemen UI disesuaikan agar interaktif dan nyaman digunakan di layar apa pun."
     },
-    { 
-      id: 3, 
-      icon: FaLock, 
-      title: "Secure Payments", 
-      description: "Transaksi aman dengan sistem keamanan terbaik." 
+    {
+      id: 3,
+      icon: FaLock,
+      title: "Top-Tier Secure Payments",
+      description: "Sistem pembayaran terenkripsi yang menjamin transaksi aman dan terlindungi. Dengan lapisan keamanan ganda, setiap data pelanggan dan detail kartu kredit dijaga ketat dari ancaman siber."
     },
-    { 
-      id: 4, 
-      icon: FaRegSmile, 
-      title: "User Friendly", 
-      description: "Antarmuka mudah digunakan untuk pengalaman optimal." 
-    },
+    {
+      id: 4,
+      icon: FaRegSmile,
+      title: "Intuitive User Experience",
+      description: "Antarmuka ramah pengguna dengan navigasi sederhana dan fitur interaktif. Dirancang untuk memastikan pengguna, baik pemula maupun ahli, dapat mengakses layanan dan fitur dengan mudah dan cepat."
+    },    
   ];
 
   // Variants untuk animasi ikon (hover effect)
@@ -66,7 +67,7 @@ export default function FeaturesSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto text-center mb-16"
+          className="max-w-4xl mx-auto text-center mb-10 md:mb-12"
         >
           <motion.h2
             variants={fadeInUp}
@@ -78,15 +79,15 @@ export default function FeaturesSection() {
               WebkitTextFillColor: "transparent",
             }}
           >
-            Experience The Magic
+            Menerapkan Teknologi Dalam
             <br />
-            Of Flight!
+            Penerbangan!
           </motion.h2>
           <motion.p
             variants={fadeInUp}
             className="text-lg lg:text-xl text-gray-700"
           >
-            Teknologi terkini untuk pengalaman tak terlupakan
+            Teknologi terkini untuk pengalaman yang tak terlupakan
           </motion.p>
         </motion.div>
 
@@ -115,7 +116,7 @@ export default function FeaturesSection() {
                   <feature.icon />
                 </motion.div>
                 <motion.h3
-                  className="text-2xl font-bold text-gray-800"
+                  className="text-2xl font-bold text-gray-800 line-clamp-1"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
@@ -124,7 +125,7 @@ export default function FeaturesSection() {
                 </motion.h3>
               </div>
               <motion.p
-                className="text-gray-600 text-lg leading-relaxed"
+                className="text-gray-600 text-lg leading-relaxed line-clamp-3"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}

@@ -1,3 +1,4 @@
+// app/components/Partner.jsx
 "use client";
 import React from "react";
 import Image from "next/image";
@@ -40,10 +41,10 @@ export default function PartnerStatsSection() {
         className="max-w-7xl mx-auto text-center mb-12"
       >
         <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
-          Our Trusted Indonesian Partners
+          Mitra Terpercaya Kami di Indonesia
         </h2>
         <p className="text-lg text-gray-600">
-          We have collaborated with top Indonesian companies.
+        Kami telah berkolaborasi dengan perusahaan terkemuka Indonesia.
         </p>
       </motion.div>
 

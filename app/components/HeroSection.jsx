@@ -1,3 +1,4 @@
+// app/components/HeroSection.jsx
 "use client";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
@@ -126,7 +127,7 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <span className="relative z-10">Book a Flight</span>
+              <span className="relative z-10">Pesan Tiket</span>
               <span className="absolute inset-0 bg-white/20 group-hover:bg-white/40 transition-opacity rounded-full"></span>
             </motion.button>
 
@@ -140,7 +141,7 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 0.6 }}
             >
               <FaPlay className="mr-3 w-5 h-5 text-blue-600" />
-              <span className="relative z-10">Watch Video</span>
+              <span className="relative z-10">Tonton Video</span>
             </motion.button>
           </motion.div>
         </motion.div>

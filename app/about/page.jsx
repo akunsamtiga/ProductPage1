@@ -1,3 +1,4 @@
+// app/about/page.jsx
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
@@ -30,16 +31,16 @@ export default function About() {
 
   // Data untuk tim profesional
   const team = [
-    { name: "Dewi", role: "CEO", image: "/images/team1.jpg" },
-    { name: "Budi", role: "CTO", image: "/images/team2.jpg" },
-    { name: "Siti", role: "COO", image: "/images/team3.jpg" },
-    { name: "Andi", role: "Head of Marketing", image: "/images/team4.jpg" },
-    { name: "Rina", role: "Head of Operations", image: "/images/team5.jpg" },
-    { name: "Wawan", role: "Chief Engineer", image: "/images/team6.jpg" },
+    { name: "Eunha", role: "CEO", image: "/images/pp1.jpg" },
+    { name: "Chaeyoung", role: "CTO", image: "/images/pp2.jpg" },
+    { name: "Nari", role: "COO", image: "/images/pp3.jpg" },
+    { name: "Jiwon", role: "Head of Marketing", image: "/images/pp4.jpg" },
+    { name: "Hana", role: "Head of Operations", image: "/images/pp5.jpg" },
+    { name: "Somin", role: "Chief Engineer", image: "/images/pp6.jpg" },
   ];
-
+  
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-blue-50 to-gray-50">
+    <section className="relative overflow-hidden bg-gradient-to-b from-blue-50 to-white">
       {/* Background Pattern (Contoh SVG abstrak sebagai dekorasi) */}
       <motion.div
         initial={{ opacity: 0 }}

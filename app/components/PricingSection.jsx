@@ -1,3 +1,4 @@
+// app/components/PricingSection.jsx
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
@@ -7,24 +8,24 @@ export default function PricingSection() {
   const plans = [
     {
       id: 1,
-      title: "Basic",
-      price: "$9.99/mo",
-      description: "Perfect for individuals starting out.",
-      features: ["1 Project", "Basic Support", "5GB Storage"],
+      title: "Economy Class",
+      price: "$99/ticket",
+      description: "Pilihan ideal untuk perjalanan hemat dengan kenyamanan standar.",
+      features: ["1 Bagasi Kabin", "Makanan Ringan", "Check-in Online"],
     },
     {
       id: 2,
-      title: "Standard",
-      price: "$19.99/mo",
-      description: "Best for growing businesses.",
-      features: ["5 Projects", "Priority Support", "50GB Storage", "Advanced Analytics"],
+      title: "Business Class",
+      price: "$299/ticket",
+      description: "Kenyamanan ekstra dengan layanan premium untuk perjalanan bisnis.",
+      features: ["2 Bagasi Kabin", "Akses Lounge Eksklusif", "Makanan Premium", "Prioritas Boarding"],
     },
     {
       id: 3,
-      title: "Premium",
-      price: "$29.99/mo",
-      description: "Ideal for professionals & enterprises.",
-      features: ["Unlimited Projects", "24/7 Support", "1TB Storage", "Advanced Security", "AI Optimization"],
+      title: "First Class",
+      price: "$799/ticket",
+      description: "Pengalaman terbang mewah dengan fasilitas eksklusif.",
+      features: ["Suite Pribadi", "Makanan Fine Dining", "Layanan Pribadi 24/7", "Akses Ruang VIP", "Check-in Prioritas"],
     },
   ];
 

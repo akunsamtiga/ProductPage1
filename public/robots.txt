@@ -1,0 +1,10 @@
+# Allow all bots to crawl everything
+User-agent: *
+Disallow:
+
+# Disallow crawling on specific folders (contoh: folder admin atau dashboard)
+Disallow: /admin/
+Disallow: /dashboard/
+
+# Sitemap location
+Sitemap: https://yourdomain.com/sitemap.xml

@@ -10,9 +10,9 @@ export default function Footer() {
           <p className="text-sm">&copy; 2025 SkyWings. All rights reserved.</p>
         </div>
         
-        <div className="flex gap-6 mt-4 md:mt-0">
-          <a href="#" className="text-sm hover:text-primary transition-colors">Sitemap</a>
-          <a href="#" className="text-sm hover:text-primary transition-colors">Contact</a>
+        <div className="flex gap-6 mt-0">
+          <a href="sitemap.xml" className="text-sm hover:text-primary transition-colors">Sitemap</a>
+          <a href="/contact" className="text-sm hover:text-primary transition-colors">Contact</a>
         </div>
       </div>
     </footer>

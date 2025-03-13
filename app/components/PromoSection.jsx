@@ -1,3 +1,4 @@
+// app/components/PromoSection.jsx
 "use client";
 import React from "react";
 import Image from "next/image";
@@ -6,7 +7,7 @@ import { fadeInLeft, fadeInRight, staggerContainer } from "../utils/animations";
 
 export default function PromoSection() {
   return (
-    <section id="promo" className="px-6 lg:px-16 py-16 bg-gradient-to-b from-gray-100 to-gray-200">
+    <section id="promo" className="px-6 lg:px-16 pt-8 pb-0 lg:pb-16 bg-gradient-to-b from-gray-100 to-gray-200">
       <motion.div 
         variants={staggerContainer}
         initial="hidden"
@@ -51,7 +52,7 @@ export default function PromoSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            UNLEASH WANDERLUST WITH SKYWINGS
+            WAKTUNYA LIBURAN DENGAN SKYWINGS
           </motion.h2>
           <motion.p 
             className="text-lg text-gray-700"
@@ -82,7 +83,7 @@ export default function PromoSection() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Book A Flight Now
+            Pesan Tiket Sekarang
           </motion.button>
         </motion.div>
       </motion.div>

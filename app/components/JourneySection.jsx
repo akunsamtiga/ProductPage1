@@ -1,3 +1,4 @@
+// app/components/JourneySection.jsx
 "use client";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -71,7 +72,7 @@ Kelas: ${flightClass}`;
               WebkitTextFillColor: "transparent",
             }}
           >
-            Journey To The Skies<br />Made Simple!
+            Perjalanan ke Manapun<br />Makin Mudah!
           </motion.h2>
           <motion.ul
             className="space-y-6"

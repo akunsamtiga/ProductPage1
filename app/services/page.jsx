@@ -1,3 +1,4 @@
+// app/services/page.jsx
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
@@ -35,7 +36,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 py-16 px-6 lg:px-16">
+    <section className="relative overflow-hidden bg-gradient-to-br from-gray-50 to-white py-16 px-6 lg:px-16">
       {/* Background Decorative SVG */}
       <motion.div
         initial={{ opacity: 0 }}

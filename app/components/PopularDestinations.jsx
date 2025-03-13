@@ -73,12 +73,13 @@ function QuickViewModal({ isOpen, onClose, destination }) {
               alt={destination.title}
               fill
               className="object-cover"
+              loading="lazy"
             />
           </div>
           <h3 className="text-2xl font-bold text-gray-900 mb-2">
             {destination.title}
           </h3>
-          <p className="text-gray-700 mb-4">{destination.description}</p>
+          <p className="text-gray-700 mb-4 line-clamp-4">{destination.description}</p>
           <div className="flex items-center mb-4">
             <FaStar className="text-yellow-500 mr-1" />
             <span className="text-gray-700">4.5</span>
@@ -137,7 +138,7 @@ export default function PopularDestinations() {
   };
 
   return (
-    <section id="destinations" className="px-6 lg:px-16 py-8 bg-gradient-to-b from-white to-gray-50">
+    <section id="destinations" className="px-6 lg:px-16 py-8 lg:py-16 bg-gradient-to-b from-white to-gray-50">
       {/* Header */}
       <motion.div
         variants={staggerContainer}
@@ -150,7 +151,7 @@ export default function PopularDestinations() {
           variants={fadeInUp}
           className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
         >
-          Popular Destinations
+          Destinasi Terpopuler
         </motion.h2>
         <motion.p variants={fadeInUp} className="text-gray-700 mb-4">
           Pilihan destinasi favorit untuk liburan Anda
@@ -186,6 +187,7 @@ export default function PopularDestinations() {
                       src={dest.imgUrl}
                       alt={dest.title}
                       fill
+                      loading="lazy"
                       className="object-cover"
                     />
                   </motion.div>
@@ -213,7 +215,7 @@ export default function PopularDestinations() {
                   <h3 className="text-xl font-bold text-gray-900 mb-3">
                     {dest.title}
                   </h3>
-                  <p className="text-gray-700 mb-2">{dest.description}</p>
+                  <p className="text-gray-700 mb-2 line-clamp-2">{dest.description}</p>
                   <div className="flex items-center">
                     <FaStar className="text-yellow-500 mr-1" />
                     <span className="text-gray-700">4.5</span>

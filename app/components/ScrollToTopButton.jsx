@@ -23,7 +23,7 @@ export default function ScrollToTopButton() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="fixed bottom-4 right-4 md:bottom-6 md:right-6 bg-gray-700 hover:bg-primary-hover text-white p-4 rounded-full shadow-lg transition-colors"
+          className="fixed bottom-4 right-4 md:bottom-6 md:right-6 bg-gray-700 hover:bg-primary-hover text-white p-4 rounded-full shadow-lg transition-colors z-50"
         >
           <FaArrowUp size={20} />
         </motion.button>
