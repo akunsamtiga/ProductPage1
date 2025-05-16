@@ -10,6 +10,7 @@ import FeaturesSection from "./components/FeaturesSection";
 import PricingSection from "./components/PricingSection";
 import FAQSection from "./components/FAQSection";
 import Partner from "./components/Partner";
+import Message from "./components/Message";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <FeaturesSection />
       <PricingSection />
       <FAQSection />
+      <Message />
       <Partner />
     </main>
   );
