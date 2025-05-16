@@ -3,9 +3,16 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from "recharts";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  Legend,
+} from "recharts";
 
-// Data logo partner menggunakan file lokal PNG
 const partners = [
   { id: 1, name: "Telkomsel", logo: "/images/telkomsel.png" },
   { id: 2, name: "Bank Mandiri", logo: "/images/mandiri.png" },
@@ -15,7 +22,6 @@ const partners = [
   { id: 6, name: "BRI", logo: "/images/bri.png" },
 ];
 
-// Data statistik (8 data)
 const statisticsData = [
   { name: "Users", value: 200 },
   { name: "Projects", value: 85 },
@@ -33,7 +39,7 @@ export default function PartnerStatsSection() {
       id="partners-stats"
       className="px-6 lg:px-16 py-12 bg-gradient-to-b from-gray-50 to-white"
     >
-      {/* Header for Partners */}
+      {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -43,18 +49,19 @@ export default function PartnerStatsSection() {
         <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
           Mitra Terpercaya Kami di Indonesia
         </h2>
-        <p className="text-lg text-gray-600">
-        Kami telah berkolaborasi dengan perusahaan terkemuka Indonesia.
+        <p className="text-lg text-gray-700">
+          Kami telah berkolaborasi dengan perusahaan terkemuka Indonesia.
         </p>
       </motion.div>
 
-      {/* Logos Section with Marquee Animation and Gradient Overlays */}
+      {/* Partner Logo Marquee */}
       <div className="relative max-w-5xl mx-auto overflow-hidden mb-16">
         <motion.div
           className="flex space-x-8"
           initial={{ x: 0 }}
           animate={{ x: "-50%" }}
-          transition={{ ease: "linear", duration: 10, repeat: Infinity }}
+          transition={{ ease: "linear", duration: 20, repeat: Infinity }}
+          style={{ animationPlayState: "running" }}
         >
           {partners.concat(partners).map((partner, index) => (
             <motion.div
@@ -67,18 +74,27 @@ export default function PartnerStatsSection() {
                 src={partner.logo}
                 alt={partner.name}
                 fill
-                objectFit="contain"
+                sizes="(max-width: 768px) 6rem, 7rem"
+                style={{ objectFit: "contain" }}
+                priority={index < 6}
               />
             </motion.div>
           ))}
         </motion.div>
-        {/* Overlay gradient putih di kiri */}
-        <div className="absolute left-0 top-0 w-16 h-full pointer-events-none bg-gradient-to-r from-gray-50 to-transparent" />
-        {/* Overlay gradient putih di kanan */}
-        <div className="absolute right-0 top-0 w-16 h-full pointer-events-none bg-gradient-to-l from-gray-50 to-transparent" />
+
+        {/* Overlay kiri */}
+        <div
+          aria-hidden="true"
+          className="absolute left-0 top-0 w-16 h-full pointer-events-none bg-gradient-to-r from-gray-50 to-transparent"
+        />
+        {/* Overlay kanan */}
+        <div
+          aria-hidden="true"
+          className="absolute right-0 top-0 w-16 h-full pointer-events-none bg-gradient-to-l from-gray-50 to-transparent"
+        />
       </div>
 
-      {/* Header for Statistics */}
+      {/* Header Statistik */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -88,7 +104,7 @@ export default function PartnerStatsSection() {
         <h2 className="text-4xl font-bold text-gray-800 mb-4">Statistics</h2>
       </motion.div>
 
-      {/* Statistics Chart */}
+      {/* Bar Chart */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}

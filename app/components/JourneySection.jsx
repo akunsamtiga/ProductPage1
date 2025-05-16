@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { fadeInLeft, fadeInRight } from "../utils/animations";
 
 export default function JourneySection() {
-  // State form
   const [step, setStep] = useState(1);
   const [fromCity, setFromCity] = useState("");
   const [toCity, setToCity] = useState("");
@@ -15,7 +14,6 @@ export default function JourneySection() {
   const [flightClass, setFlightClass] = useState("Economy");
   const [showResultModal, setShowResultModal] = useState(false);
 
-  // Hasil form sebagai string
   const formResultText = `Kota Asal: ${fromCity}
 Kota Tujuan: ${toCity}
 Tanggal Berangkat: ${departureDate}
@@ -23,25 +21,21 @@ Tanggal Kembali: ${returnDate}
 Jumlah Penumpang: ${passengers}
 Kelas: ${flightClass}`;
 
-  // Fungsi untuk menyalin ke clipboard
   const handleCopy = () => {
     navigator.clipboard.writeText(formResultText);
     alert("Informasi telah disalin ke clipboard!");
   };
 
-  // WhatsApp link
-  const waNumber = "6281234567890"; // Ganti sesuai nomor Anda
+  const waNumber = "6281234567890";
   const waMessage = encodeURIComponent(
     `Halo, saya ingin informasi lebih lanjut mengenai penerbangan:\n${formResultText}`
   );
   const waLink = `https://wa.me/${waNumber}?text=${waMessage}`;
 
-  // Fungsi untuk menampilkan modal hasil
   const handleFinish = () => {
     setShowResultModal(true);
   };
 
-  // Variants untuk transisi form step
   const formStepVariants = {
     initial: { opacity: 0, x: 50 },
     animate: { opacity: 1, x: 0 },
@@ -51,29 +45,32 @@ Kelas: ${flightClass}`;
   return (
     <section
       id="journey"
-      className="px-6 lg:px-16 py-4 bg-gradient-to-b from-gray-50 to-gray-100"
+      aria-labelledby="journey-title"
+      className="px-6 lg:px-16 py-8 bg-gradient-to-b from-gray-50 to-gray-100"
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        {/* Left Content */}
+        {/* Kiri: Info */}
         <motion.div
           variants={fadeInLeft}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="bg-white rounded-2xl p-10 shadow-xl transform transition-all hover:scale-105"
+          className="bg-white rounded-2xl p-10 shadow-xl transform transition-all hover:scale-[1.01]"
         >
           <motion.h2
+            id="journey-title"
             variants={fadeInLeft}
             className="text-3xl md:text-5xl font-black leading-[1.1] mb-4 p-2 py-4 text-transparent bg-clip-text"
             style={{
-              backgroundImage:
-                "linear-gradient(to right, #1e40af, #06b6d4)",
+              backgroundImage: "linear-gradient(to right, #1e40af, #06b6d4)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
             }}
           >
-            Perjalanan ke Manapun<br />Makin Mudah!
+            Perjalanan ke Manapun
+            <br />Makin Mudah!
           </motion.h2>
+
           <motion.ul
             className="space-y-6"
             initial="hidden"
@@ -94,12 +91,16 @@ Kelas: ${flightClass}`;
                   show: { opacity: 1, x: 0 },
                 }}
               >
-                <span className="bg-blue-600 text-white rounded-full p-1">
+                <span
+                  className="bg-blue-600 text-white rounded-full p-1"
+                  aria-hidden="true"
+                >
                   <svg
                     className="w-5 h-5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
+                    aria-hidden="true"
                   >
                     <path
                       strokeLinecap="round"
@@ -115,7 +116,7 @@ Kelas: ${flightClass}`;
           </motion.ul>
         </motion.div>
 
-        {/* Right Form */}
+        {/* Kanan: Form */}
         <motion.div
           variants={fadeInRight}
           initial="hidden"
@@ -124,7 +125,7 @@ Kelas: ${flightClass}`;
           className="bg-white rounded-2xl p-8 shadow-xl space-y-8"
         >
           <h3 className="text-2xl font-bold text-blue-900">Form Penerbangan</h3>
-          <AnimatePresence exitBeforeEnter>
+          <AnimatePresence mode="wait">
             {step === 1 && (
               <motion.div
                 key="step1"
@@ -135,23 +136,34 @@ Kelas: ${flightClass}`;
                 transition={{ duration: 0.5 }}
                 className="space-y-6"
               >
-                <input
-                  type="text"
-                  placeholder="Kota Asal"
-                  value={fromCity}
-                  onChange={(e) => setFromCity(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-200 transition-colors"
-                />
-                <input
-                  type="text"
-                  placeholder="Kota Tujuan"
-                  value={toCity}
-                  onChange={(e) => setToCity(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-200 transition-colors"
-                />
+                <label className="block">
+                  <span className="sr-only">Kota Asal</span>
+                  <input
+                    type="text"
+                    placeholder="Kota Asal"
+                    autoComplete="address-level1"
+                    aria-label="Kota Asal"
+                    value={fromCity}
+                    onChange={(e) => setFromCity(e.target.value)}
+                    className="input-primary"
+                  />
+                </label>
+                <label className="block">
+                  <span className="sr-only">Kota Tujuan</span>
+                  <input
+                    type="text"
+                    placeholder="Kota Tujuan"
+                    autoComplete="address-level2"
+                    aria-label="Kota Tujuan"
+                    value={toCity}
+                    onChange={(e) => setToCity(e.target.value)}
+                    className="input-primary"
+                  />
+                </label>
                 <button
+                  type="button"
                   onClick={() => setStep(2)}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition-colors"
+                  className="btn-primary"
                 >
                   Selanjutnya
                 </button>
@@ -167,28 +179,38 @@ Kelas: ${flightClass}`;
                 transition={{ duration: 0.5 }}
                 className="space-y-6"
               >
-                <input
-                  type="date"
-                  value={departureDate}
-                  onChange={(e) => setDepartureDate(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-200 transition-colors"
-                />
-                <input
-                  type="date"
-                  value={returnDate}
-                  onChange={(e) => setReturnDate(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-200 transition-colors"
-                />
+                <label className="block">
+                  <span className="sr-only">Tanggal Berangkat</span>
+                  <input
+                    type="date"
+                    value={departureDate}
+                    onChange={(e) => setDepartureDate(e.target.value)}
+                    aria-label="Tanggal Berangkat"
+                    className="input-primary"
+                  />
+                </label>
+                <label className="block">
+                  <span className="sr-only">Tanggal Kembali</span>
+                  <input
+                    type="date"
+                    value={returnDate}
+                    onChange={(e) => setReturnDate(e.target.value)}
+                    aria-label="Tanggal Kembali"
+                    className="input-primary"
+                  />
+                </label>
                 <div className="flex justify-between gap-4">
                   <button
+                    type="button"
                     onClick={() => setStep(1)}
-                    className="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-700 py-3 rounded-lg transition-colors"
+                    className="btn-secondary"
                   >
                     Kembali
                   </button>
                   <button
+                    type="button"
                     onClick={() => setStep(3)}
-                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition-colors"
+                    className="btn-primary"
                   >
                     Selanjutnya
                   </button>
@@ -205,32 +227,42 @@ Kelas: ${flightClass}`;
                 transition={{ duration: 0.5 }}
                 className="space-y-6"
               >
-                <input
-                  type="number"
-                  placeholder="Jumlah Penumpang"
-                  value={passengers}
-                  onChange={(e) => setPassengers(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-200 transition-colors"
-                />
-                <select
-                  value={flightClass}
-                  onChange={(e) => setFlightClass(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-200 transition-colors"
-                >
-                  <option>Economy</option>
-                  <option>Business</option>
-                  <option>First Class</option>
-                </select>
+                <label className="block">
+                  <span className="sr-only">Jumlah Penumpang</span>
+                  <input
+                    type="number"
+                    placeholder="Jumlah Penumpang"
+                    value={passengers}
+                    onChange={(e) => setPassengers(e.target.value)}
+                    className="input-primary"
+                    aria-label="Jumlah Penumpang"
+                  />
+                </label>
+                <label className="block">
+                  <span className="sr-only">Kelas Penerbangan</span>
+                  <select
+                    value={flightClass}
+                    onChange={(e) => setFlightClass(e.target.value)}
+                    className="input-primary"
+                    aria-label="Kelas Penerbangan"
+                  >
+                    <option>Economy</option>
+                    <option>Business</option>
+                    <option>First Class</option>
+                  </select>
+                </label>
                 <div className="flex justify-between gap-4">
                   <button
+                    type="button"
                     onClick={() => setStep(2)}
-                    className="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-700 py-3 rounded-lg transition-colors"
+                    className="btn-secondary"
                   >
                     Kembali
                   </button>
                   <button
+                    type="button"
                     onClick={handleFinish}
-                    className="flex-1 bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-semibold transition-colors"
+                    className="btn-success"
                   >
                     Selesai
                   </button>
@@ -241,14 +273,16 @@ Kelas: ${flightClass}`;
         </motion.div>
       </div>
 
-      {/* Modal Hasil Form */}
+      {/* Modal */}
       <AnimatePresence>
         {showResultModal && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            role="dialog"
+            aria-modal="true"
           >
             <motion.div
               className="bg-white rounded-2xl p-6 max-w-lg w-full relative"
@@ -259,7 +293,8 @@ Kelas: ${flightClass}`;
             >
               <button
                 onClick={() => setShowResultModal(false)}
-                className="absolute top-2 right-2 text-gray-600 hover:text-gray-800 text-2xl transition-colors"
+                className="absolute top-2 right-2 text-gray-600 hover:text-gray-800 text-2xl"
+                aria-label="Tutup"
               >
                 &times;
               </button>
@@ -271,8 +306,9 @@ Kelas: ${flightClass}`;
               </div>
               <div className="flex justify-end gap-4">
                 <button
+                  type="button"
                   onClick={handleCopy}
-                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full transition-colors"
+                  className="btn-primary"
                 >
                   Salin Informasi
                 </button>
@@ -280,7 +316,7 @@ Kelas: ${flightClass}`;
                   href={waLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-full transition-colors"
+                  className="btn-success"
                 >
                   Chat WA
                 </a>

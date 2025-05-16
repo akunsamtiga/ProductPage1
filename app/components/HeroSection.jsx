@@ -4,12 +4,14 @@ import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import VideoModal from "./VideoModal";
 import { fadeInUp, staggerContainer } from "../utils/animations";
 import { FaPlay } from "react-icons/fa";
 
-// Impor RainEffect secara dinamis agar tidak di-render di server
-const RainEffect = dynamic(() => import("./RainEffect"), { ssr: false });
+// Impor RainEffect secara dinamis dengan loading state
+const RainEffect = dynamic(() => import("./RainEffect"), {
+  ssr: false,
+  loading: () => <div className="hidden" />,
+});
 
 export default function HeroSection() {
   const [showVideo, setShowVideo] = useState(false);
@@ -22,17 +24,20 @@ export default function HeroSection() {
       variants={staggerContainer}
       className="relative px-4 md:px-6 lg:px-16 pt-4 md:pt-6 pb-12 md:pb-16 lg:pb-24 bg-gradient-to-b from-blue-100 to-white overflow-hidden"
     >
-      {/* Animated Blob Background */}
+      {/* Animated Blob Background - Optimized with aria-hidden */}
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
         className="absolute inset-0 -z-10"
+        aria-hidden="true"
       >
         <svg
           className="absolute inset-x-0 bottom-0 h-[800px] w-full text-gray-100"
           preserveAspectRatio="none"
           viewBox="0 0 1440 600"
+          role="img"
+          aria-label="Decorative background"
         >
           <path
             fill="currentColor"
@@ -60,6 +65,7 @@ export default function HeroSection() {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
             className="absolute top-72 -left-10 w-[200px] md:top-10 md:-left-6 md:w-[250px] lg:hidden z-[5]"
+            aria-hidden="true"
           >
             <motion.div
               animate={{ x: ["-6%", "3%", "-3%"], y: ["-6%", "3%", "-3%"] }}
@@ -73,23 +79,22 @@ export default function HeroSection() {
             >
               <Image
                 src="/images/plane.png"
-                alt="Airplane"
+                alt="Illustration of an airplane"
                 width={250}
                 height={250}
                 className="opacity-100"
+                priority
               />
-              {/* Tambahkan efek hujan */}
               <RainEffect />
             </motion.div>
           </motion.div>
 
-          {/* Animated Heading dengan text clip masking */}
+          {/* Animated Heading */}
           <motion.h1
             variants={fadeInUp}
             className="text-5xl lg:text-7xl font-black leading-[1.1] mb-2 p-2 py-3 text-transparent bg-clip-text"
             style={{
-              backgroundImage:
-                "linear-gradient(to right, #1e40af, #06b6d4)",
+              backgroundImage: "linear-gradient(to right, #1e40af, #06b6d4)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
             }}
@@ -126,6 +131,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
+              aria-label="Book tickets now"
             >
               <span className="relative z-10">Pesan Tiket</span>
               <span className="absolute inset-0 bg-white/20 group-hover:bg-white/40 transition-opacity rounded-full"></span>
@@ -139,8 +145,9 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
+              aria-label="Watch promotional video"
             >
-              <FaPlay className="mr-3 w-5 h-5 text-blue-600" />
+              <FaPlay className="mr-3 w-5 h-5 text-blue-600" aria-hidden="true" />
               <span className="relative z-10">Tonton Video</span>
             </motion.button>
           </motion.div>
@@ -152,6 +159,7 @@ export default function HeroSection() {
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
           className="order-1 lg:order-2 relative h-[300px] lg:h-[500px] w-full hidden lg:block"
+          aria-hidden="true"
         >
           <motion.div
             animate={{ y: ["0%", "-8%", "0%"] }}
@@ -165,20 +173,18 @@ export default function HeroSection() {
           >
             <Image
               src="/images/plane.png"
-              alt="Airplane"
+              alt="Illustration of an airplane"
               fill
               className="object-contain object-right-bottom lg:object-center"
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
-            {/* Overlay efek hujan */}
             <RainEffect />
           </motion.div>
           <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent"></div>
         </motion.div>
       </div>
 
-      <VideoModal isOpen={showVideo} onClose={() => setShowVideo(false)} />
     </motion.section>
   );
 }

@@ -8,22 +8,20 @@ import JourneySection from "./components/JourneySection";
 import PromoSection from "./components/PromoSection";
 import FeaturesSection from "./components/FeaturesSection";
 import PricingSection from "./components/PricingSection";
-const TestimonialsSection = dynamic(() => import("./components/TestimonialsSection"), { ssr: false });
 import FAQSection from "./components/FAQSection";
 import Partner from "./components/Partner";
 
 export default function Home() {
   return (
-    <>
+    <main>
       <HeroSection />
       <PopularDestinations />
       <JourneySection />
       <PromoSection />
       <FeaturesSection />
       <PricingSection />
-      <TestimonialsSection />
       <FAQSection />
       <Partner />
-    </>
+    </main>
   );
 }
